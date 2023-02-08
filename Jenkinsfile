@@ -11,6 +11,6 @@ node {
     }
    stage("Deploy"){
     sh ' docker rm -f configserver||true'
-    sh 'docker run -d -p 8888:8888--name configserver configserver:latest '
+    sh 'docker run -d -p 8888:8888 --name configserver configserver:latest '
 }
 }
