@@ -8,11 +8,7 @@ node {
     sh 'docker build -t configserver:latest -f Dockerfile .'
         sh 'docker image ls'
     }
-withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'test', usernameVariable: 'apurva09', passwordVariable: 'password']]) {
-        sh 'docker login -u apurva09 -p $password'
-	}
-    stage("Pushing Image to Docker Hub"){
-	     sh 'docker tag configserver apurva09/configserver:latest'
-	   sh 'docker push apurva09/configserver:latest'
-    }
+   stage("Deploy"){
+    sh ' docker rm -f configserver:latest||true'
+    sh 'docker run -d -p --name configserver:latest configserver:latest '
 }
