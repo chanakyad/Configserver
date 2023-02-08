@@ -5,6 +5,7 @@ node {
     }
    
     stage("Docker build"){
+    sh 'mvn clean package'
     sh 'docker build -t configserver:latest -f Dockerfile .'
         sh 'docker image ls'
     }
