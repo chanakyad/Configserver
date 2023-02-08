@@ -12,3 +12,4 @@ node {
     sh ' docker rm -f configserver:latest||true'
     sh 'docker run -d -p --name configserver:latest configserver:latest '
 }
+}
