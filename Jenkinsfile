@@ -10,7 +10,7 @@ node {
         sh 'docker image ls'
     }
    stage("Deploy"){
-    sh ' docker rm -f configserver:latest||true'
-    sh 'docker run -d -p -- name configserver:latest configserver:latest '
+    sh ' docker rm -f configserver||true'
+    sh 'docker run -d -p 8888:8888--name configserver configserver:latest '
 }
 }
